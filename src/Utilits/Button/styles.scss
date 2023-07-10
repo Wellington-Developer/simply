@@ -1,0 +1,24 @@
+button {
+    padding: 12px;
+    border: none;
+    background: var(--primary-color-o2);
+    border-radius: 5px;
+    transition: all 0.6s ease-in-out;
+    display: block;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        color: var(--primary-color-o5);
+    }
+
+}
+
+button:hover {
+    cursor: pointer;
+    background: var(--primary-color-o5);
+
+    svg {
+        color: var(--primary-color-o1);
+    }
+}
