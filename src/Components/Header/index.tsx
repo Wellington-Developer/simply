@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 export const Header = () => {
     const [ dropdownActive, setDropdownActive ] = useState(false);
     const [ inputActive, setInputActive ] = useState(false);
-    const [ searchProduct, setSearchProduct ] = useState('');
 
     const [categories, setCategories] = useState([])
 
@@ -60,7 +59,7 @@ export const Header = () => {
                 inputActive ?
                 (
                     <div className="input-container__header">
-                        <input type="text" placeholder="O que procura?" onChange={(e) => setSearchProduct(e.target.value)}/>
+                        <input type="text" placeholder="O que procura?"/>
                         <AiOutlineClose onClick={ () => setInputActive(false) }/>
                     </div>
                 ) :
