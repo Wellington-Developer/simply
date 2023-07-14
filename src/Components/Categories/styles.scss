@@ -2,7 +2,9 @@
     display: flex;
     gap: 24px;
     font-size: 1rem;
-    padding: 12px 0;
+    padding: 40px 0;
+    overflow: auto;
+   
 
     .category-circle {
         padding: 6px 12px;
@@ -11,5 +13,14 @@
         color: var(--primary-color-o5);
         font-weight: 500;
         cursor: pointer;
+        
+        p {
+            white-space: nowrap;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
+
+
 }

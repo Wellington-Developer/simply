@@ -24,7 +24,7 @@ export const Categories = () => {
                             <Link to={`/category/${item}`}>
                                 <div className="category-circle">
                                 <div className="circle"></div>
-                                {item}
+                                    <p>{item}</p>
                                 </div>
                             </Link>
                         </>
