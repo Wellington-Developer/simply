@@ -38,6 +38,7 @@
   font-weight: 800;
   transition: all 0.3s ease-in;
   cursor: pointer;
+  color: var(--black-color-o6);
 }
 .mid-side__header h1:hover {
   color: var(--black-color-o5);

@@ -1,23 +1,43 @@
 // Styles
 import './styles.css';
 
-// React Components
-import { RowProductsType } from '../../types/RowProducts';
+// Components
 import { Product } from '../../Utilits/Product';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export const RowProducts = ({ title }: RowProductsType) => {
+
+export const RowProducts = () => {
+    const [categories, setCategories] = useState([])
+
+    const fetchCategories = () => {
+        fetch('https://fakestoreapi.com/products/categories')
+            .then(res => res.json())
+            .then(json => setCategories(json))
+    }
+
+    useEffect(() => {
+        fetchCategories()
+    }, [])
+
     return (
-        <div className="principal-container__products">
-            <div className="title-content__products">
-                <h1>{title}</h1>
-                <a href="#">Ver mais</a>
-            </div>
+        <>
+            {
+                categories && categories.map((category) => {
+                    return <div className="principal-container__products">
+                        <div className="title-content__products">
+                            <h1>{category}</h1>
+                            <Link to={`/category/${category}`}>Ver mais</Link>
 
-            <div className="container-section__products">
-                <Product imgLink='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' title='Lago di Braies' price={120} linkProduct='/product'/>
-                <Product imgLink='https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1421&q=80' title='Lago di Braies' price={120} linkProduct='/product'/>
-                <Product imgLink='https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80' title='Lago di Braies' price={120} linkProduct='/product'/>
-            </div>
-        </div>
+                        </div>
+                        <div className="container-section__products">
+                            <Product category={category} index={0}/>
+                            <Product category={category} index={1}/>
+                            <Product category={category} index={2}/>
+                        </div>
+                    </div>
+                })
+            }
+        </>
     )
 }

@@ -1,11 +1,11 @@
 .single-content__product {
   width: 100%;
+  max-width: 400px;
   border-radius: 5px;
   cursor: pointer;
 }
 .single-content__product img {
-  max-height: 400px;
-  height: 100%;
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px 5px 0 0;
@@ -20,10 +20,14 @@
   font-weight: 400;
   color: var(--black-color-o5);
   padding-bottom: 12px;
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .single-content__product .info-product p {
   color: var(--black-color-o6);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 24px;
 }
 

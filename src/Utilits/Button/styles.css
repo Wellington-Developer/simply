@@ -1,5 +1,5 @@
 button {
-  padding: 12px;
+  padding: 18px;
   border: none;
   background: var(--primary-color-o2);
   border-radius: 5px;
@@ -7,8 +7,6 @@ button {
   display: block;
 }
 button svg {
-  width: 24px;
-  height: 24px;
   color: var(--primary-color-o5);
 }
 

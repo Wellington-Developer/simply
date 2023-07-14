@@ -1,20 +1,44 @@
 // Styles
+import { useEffect, useState } from 'react';
 import { ButtonBuy } from '../../Utilits/ButtonBuy';
 import './styles.css'
 
 // React Icons
 import { AiFillStar, AiFillCreditCard } from 'react-icons/ai';
 
+// React Hooks - Router DOM
+import { useParams } from 'react-router-dom';
+
+type ProductType = {
+    image: string,
+    title: string,
+    description: string,
+    price: number
+}
 
 export const ProductPage = () => {
+    const params = useParams();
+    const [product, setProduct] = useState<ProductType>()
+
+    const fetchProduct = () => {
+        fetch(`https://fakestoreapi.com/products/${params.id}`)
+        .then(r => r.json())
+        .then(response => setProduct(response))
+    }
+
+    useEffect(() => {
+        fetchProduct()
+    }, [])
+
+
     return (
-        <div className="info-product__page">
+        product && <div className="info-product__page">
             <div className="left-side__content">
-                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=647&q=80" />
+                <img src={product.image} />
             </div>
             <div className="right-side__content">
-                <h3 id="price">R$ 289</h3>
-                <h1>Controle de PS4</h1>
+                <h3 id="price">R$ {product.price}</h3>
+                <h1>{product.title}</h1>
                 <div className="icons">
                     <div className="icons-content">
                         <AiFillStar />
@@ -23,9 +47,9 @@ export const ProductPage = () => {
                         <AiFillStar />
                         <AiFillStar />
                     </div>
-                    5 estrelas!
+                    <p>5 avaliações!</p>
                 </div>
-                <p>Revolucionário, intuitivo e preciso: o controle sem fio DualShock 4 para o sistema PlayStation 4 define esta geração de jogos, combinando recursos revolucionários e conforto com controles precisos e intuitivos.</p>
+                <p>{product.description}</p>
                 <div className="payment-method__info">
                     <div className="box-payment"><AiFillCreditCard />10% de desconto para pagamento via PIX</div>
                     <div className="box-payment"><AiFillCreditCard />10x sem juros no cartão de crédito (ver parcelas)</div>

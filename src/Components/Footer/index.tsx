@@ -1,6 +1,9 @@
 // Styles
 import './styles.css'
 
+// Logo SVG
+import logoImg from '../../assets/icons/logo.svg';
+
 export const Footer = () => {
 
     return (
@@ -49,6 +52,9 @@ export const Footer = () => {
                         <li>Políticas de privacidade</li>
                     </ul>
                 </div>
+            </div>
+            <div className="logo">
+                <img src={logoImg} id="logo"/>
             </div>
         </div>
     )

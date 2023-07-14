@@ -17,6 +17,19 @@
     flex: 1;
 }
 
+.logo {
+    width: 100%;
+    max-width: 1152px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+}
+
+#logo {
+    max-width: 150px;
+}
+
 .box-footer h1 {
     padding-bottom: 30px;
 }
